@@ -10,7 +10,6 @@ function run() {
       // console.log(data);
 
       const displayInfo = document.querySelector("#display-info");
-      const h1 = document.querySelector(h1)
       let nameList = document.querySelector("#titles");
       
       for (const film of data) {
@@ -38,6 +37,7 @@ function run() {
       const review = document.createElement('li')
 
       reviewForm.addEventListener('submit', (e) => {
+        
         e.preventDefault()
         
         review.innerText = e.target['review'].value
@@ -46,6 +46,7 @@ function run() {
         // `
 
         reviewsContainer.append(review)
+
         console.log(review)
 
         
