@@ -11,47 +11,43 @@ function run() {
 
       const displayInfo = document.querySelector("#display-info");
       let nameList = document.querySelector("#titles");
-      
+
       for (const film of data) {
         const option = document.createElement("option");
         option.textContent = film.title;
         nameList.append(option);
       }
-      
+
       const movieTitle = document.createElement("h3");
       const releaseYear = document.createElement("p");
       nameList.addEventListener("change", (e) => {
-        for(const options of data){
+        for (const options of data) {
           if (options.title === e.target.value) {
-            movieTitle.innerText = options.title
+            movieTitle.innerText = options.title;
             releaseYear.innerText = options.description;
 
-            displayInfo.append(movieTitle, releaseYear)
+            displayInfo.append(movieTitle, releaseYear);
           }
-
         }
-      })
-      const reviewForm = document.querySelector('form')
-      let userReview = document.querySelector('#review')
-      const reviewsContainer = document.querySelector('ul')
-      const review = document.createElement('li')
+      });
+      
+      const reviewForm = document.querySelector("form");
+      let userReview = document.querySelector("#review");
+      const reviewsContainer = document.querySelector("ul");
+      const review = document.createElement("li");
 
-      reviewForm.addEventListener('submit', (e) => {
-        
-        e.preventDefault()
-        
-        review.innerText = e.target['review'].value
+      reviewForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        review.innerText = e.target["review"].value;
 
         // review.innerHTML = `<strong>${nameList.value}:<strong> ${}
         // `
 
-        reviewsContainer.append(review)
+        reviewsContainer.append(review);
 
-        console.log(review)
-
-        
-
-      })
+        console.log(review);
+      });
     })
     .catch((err) => console.log(err));
 }
