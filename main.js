@@ -7,7 +7,7 @@ function run() {
   fetch(BASE_URL)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
 
       const displayInfo = document.querySelector("#display-info");
       let nameList = document.querySelector("#titles");
@@ -38,10 +38,12 @@ function run() {
       });
 
       const reviewForm = document.querySelector("form");
+      let userReview = document.querySelector("#review");
       const reviewsContainer = document.querySelector("ul");
       const review = document.createElement("li");
 
-      reviewForm.addEventListener("submit", (e) => {
+      reviewForm.addEventListener("sumbit", (e) => {
+        
         e.preventDefault();
 
         review.innerText = e.target["review"].value;
@@ -52,7 +54,7 @@ function run() {
 
         reviewsContainer.append(review);
 
-        // userReview.reset()
+        // userReview.remove()
       });
     })
     .catch((err) => console.log(err));
