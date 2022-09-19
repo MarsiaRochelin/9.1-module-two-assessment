@@ -25,6 +25,7 @@ function run() {
       nameList.addEventListener("change", (e) => {
         for (const options of data) {
           if (options.title === e.target.value) {
+
             movieTitle.innerText = options.title;
 
             releaseYear.innerText = `${options.release_date}
@@ -32,13 +33,11 @@ function run() {
             moviesDescription.innerText = `${options.description}`
 
             displayInfo.append(movieTitle, releaseYear, moviesDescription);
-            console.log(releaseYear);
           }
         }
       });
 
       const reviewForm = document.querySelector("form");
-      let userReview = document.querySelector("#review");
       const reviewsContainer = document.querySelector("ul");
       const review = document.createElement("li");
 
