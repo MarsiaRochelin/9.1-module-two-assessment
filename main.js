@@ -7,7 +7,7 @@ function run() {
   fetch(BASE_URL)
     .then((res) => res.json())
     .then((data) => {
-      // console.log(data);
+      console.log(data);
 
       const displayInfo = document.querySelector("#display-info");
       let nameList = document.querySelector("#titles");
@@ -19,18 +19,24 @@ function run() {
       }
 
       const movieTitle = document.createElement("h3");
-      const releaseYear = document.createElement("p");
+      const releaseYear = document.createElement("p")
+      const moviesDescription = document.createElement('p')
+
       nameList.addEventListener("change", (e) => {
         for (const options of data) {
           if (options.title === e.target.value) {
             movieTitle.innerText = options.title;
-            releaseYear.innerText = options.description;
 
-            displayInfo.append(movieTitle, releaseYear);
+            releaseYear.innerText = `${options.release_date}
+            `;
+            moviesDescription.innerText = `${options.description}`
+
+            displayInfo.append(movieTitle, releaseYear, moviesDescription);
+            console.log(releaseYear);
           }
         }
       });
-      
+
       const reviewForm = document.querySelector("form");
       let userReview = document.querySelector("#review");
       const reviewsContainer = document.querySelector("ul");
@@ -41,12 +47,13 @@ function run() {
 
         review.innerText = e.target["review"].value;
 
-        // review.innerHTML = `<strong>${nameList.value}:<strong> ${}
-        // `
+        review.innerHTML = `<strong>${nameList.value}:<strong> ${userReview.value}
+
+        `;
 
         reviewsContainer.append(review);
 
-        console.log(review);
+        // userReview.reset()
       });
     })
     .catch((err) => console.log(err));
