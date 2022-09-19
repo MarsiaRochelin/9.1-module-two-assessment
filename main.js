@@ -10,6 +10,7 @@ function run() {
       // console.log(data);
 
       const displayInfo = document.querySelector("#display-info");
+      const h1 = document.querySelector(h1)
       let nameList = document.querySelector("#titles");
       
       for (const film of data) {
