@@ -23,6 +23,7 @@ function run() {
       const moviesDescription = document.createElement("p");
 
       nameList.addEventListener("change", (e) => {
+
         for (const options of data) {
           if (options.title === e.target.value) {
             movieTitle.innerText = options.title;
@@ -69,6 +70,8 @@ function run() {
           allReviews.forEach((review) => 
             review.remove())
         })
+
+        
     })
     .catch((err) => console.log(err));
 }
