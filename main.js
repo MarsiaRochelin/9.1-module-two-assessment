@@ -19,18 +19,17 @@ function run() {
       }
 
       const movieTitle = document.createElement("h3");
-      const releaseYear = document.createElement("p")
-      const moviesDescription = document.createElement('p')
+      const releaseYear = document.createElement("p");
+      const moviesDescription = document.createElement("p");
 
       nameList.addEventListener("change", (e) => {
         for (const options of data) {
           if (options.title === e.target.value) {
-
             movieTitle.innerText = options.title;
 
             releaseYear.innerText = `${options.release_date}
             `;
-            moviesDescription.innerText = `${options.description}`
+            moviesDescription.innerText = `${options.description}`;
 
             displayInfo.append(movieTitle, releaseYear, moviesDescription);
           }
@@ -38,24 +37,38 @@ function run() {
       });
 
       const reviewForm = document.querySelector("form");
-      let userReview = document.querySelector("#review");
       const reviewsContainer = document.querySelector("ul");
-      const review = document.createElement("li");
-
-      reviewForm.addEventListener("sumbit", (e) => {
+      
+      reviewForm.addEventListener("submit", (e) => {
         
-        e.preventDefault();
-
+        e.preventDefault()
+        
+        const review = document.createElement("li");
         review.innerText = e.target["review"].value;
+        
+        if (!nameList.value) {
+          window.confirm("Please select a movie first");
+        }
+       
+        if (nameList.value && review.innerText) {
+          review.innerHTML = `
+          <strong>${nameList.value}:<strong> ${review.innerText}
+            `;
 
-        review.innerHTML = `<strong>${nameList.value}:<strong> ${userReview.value}
-
-        `;
-
-        reviewsContainer.append(review);
-
-        // userReview.remove()
+          reviewsContainer.append(review);
+        }
+        reviewForm.reset();
       });
+
+        const reviewReset = document.querySelector('#reset-reviews')
+        
+        reviewReset.addEventListener('click', () => {
+          
+          const allReviews = document.querySelectorAll('li')
+          
+          allReviews.forEach((review) => 
+            review.remove())
+        })
     })
     .catch((err) => console.log(err));
 }

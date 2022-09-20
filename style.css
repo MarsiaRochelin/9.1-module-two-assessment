@@ -1,10 +1,22 @@
 body {
     background-color: lavender;
-    font-family:monospace
+    font-family:monospace;
+
 }
 
 header {
     width: 75%;
     background-color: skyblue;
+    /* margin-left: 170px; */
+    /* center the header */
+}
+
+/* h1 {   
+move h1 to top right corner of the header
+} */
+
+img {width: 200px;
+    height: 146;
+
 }
 
